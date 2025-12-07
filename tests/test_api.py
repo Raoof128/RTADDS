@@ -2,18 +2,17 @@
 from __future__ import annotations
 
 import io
+import warnings
 from typing import Any
 
 import numpy as np
 import soundfile as sf
 from fastapi.testclient import TestClient
 
-# Silence librosa warnings for synthetic short signals during tests.
-import warnings
-
-warnings.filterwarnings("ignore", category=UserWarning, module=r"librosa.*")
-
 from backend.main import app
+
+# Silence librosa warnings for synthetic short signals during tests.
+warnings.filterwarnings("ignore", category=UserWarning, module=r"librosa.*")
 
 client = TestClient(app)
 

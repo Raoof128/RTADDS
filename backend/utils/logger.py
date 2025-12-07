@@ -1,10 +1,9 @@
-"""Logging utility for the application."""
+"""Logging utility for consistent application logging."""
 from __future__ import annotations
 
 import logging
 from logging.handlers import RotatingFileHandler
 from pathlib import Path
-
 
 LOG_DIR = Path("logs")
 LOG_DIR.mkdir(exist_ok=True)

@@ -1,8 +1,6 @@
 """Synthetic vocoder artifact detection logic."""
 from __future__ import annotations
 
-from typing import Dict, List, Tuple
-
 import numpy as np
 
 from backend.utils.logger import get_logger
@@ -10,7 +8,7 @@ from backend.utils.logger import get_logger
 logger = get_logger(__name__)
 
 
-def detect_vocoder_artifacts(mel_spectrogram: np.ndarray) -> Tuple[float, np.ndarray]:
+def detect_vocoder_artifacts(mel_spectrogram: np.ndarray) -> tuple[float, np.ndarray]:
     """Detect vocoder-like artifacts using heuristic cues.
 
     Args:

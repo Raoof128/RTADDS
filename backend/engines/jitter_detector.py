@@ -1,8 +1,6 @@
 """Micro-jitter detection approximations."""
 from __future__ import annotations
 
-from typing import Dict, List, Tuple
-
 import librosa
 import numpy as np
 
@@ -11,7 +9,9 @@ from backend.utils.logger import get_logger
 logger = get_logger(__name__)
 
 
-def compute_jitter_metrics(waveform: np.ndarray, sample_rate: int) -> Tuple[float, Dict[str, float]]:
+def compute_jitter_metrics(
+    waveform: np.ndarray, sample_rate: int
+) -> tuple[float, dict[str, float]]:
     """Compute jitter and shimmer proxies.
 
     Args:

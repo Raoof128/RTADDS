@@ -1,7 +1,7 @@
-"""Simulated WebRTC streaming endpoints."""
+"""Streaming endpoints for simulated audio ingestion."""
 from __future__ import annotations
 
-from typing import Any, Dict
+from typing import Any
 
 import numpy as np
 from fastapi import APIRouter, HTTPException
@@ -25,11 +25,11 @@ router = APIRouter(prefix="/stream", tags=["stream"])
 logger = get_logger(__name__)
 feature_extractor = FeatureExtractor()
 
-stream_state: Dict[str, Dict[str, Any]] = {}
+stream_state: dict[str, dict[str, Any]] = {}
 
 
 @router.post("/start")
-async def start_stream(request: StreamStartRequest) -> Dict[str, str]:
+async def start_stream(request: StreamStartRequest) -> dict[str, str]:
     """Initialize a simulated streaming session."""
     session_id = request.session_id
     if session_id in stream_state:
@@ -41,7 +41,7 @@ async def start_stream(request: StreamStartRequest) -> Dict[str, str]:
 
 
 @router.post("/chunk")
-async def ingest_chunk(request: StreamChunkRequest) -> Dict[str, Any]:
+async def ingest_chunk(request: StreamChunkRequest) -> dict[str, Any]:
     """Ingest a chunk of audio samples (already at 16kHz)."""
 
     session_id = request.session_id

@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Any, Dict
+from typing import Any
 
 from fastapi import APIRouter, HTTPException
 
@@ -15,7 +15,7 @@ logger = get_logger(__name__)
 
 
 @router.post("")
-async def create_report(payload: ReportRequest) -> Dict[str, Any]:
+async def create_report(payload: ReportRequest) -> dict[str, Any]:
     """Generate a PDF report and return path."""
     try:
         report_path = generate_report(Path("assets/report.pdf"), payload.summary, payload.scores)

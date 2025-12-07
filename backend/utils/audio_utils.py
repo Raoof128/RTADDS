@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import io
-from typing import Dict, List, Tuple
 
 import librosa
 import numpy as np
@@ -20,7 +19,7 @@ class AudioProcessingError(RuntimeError):
     """Raised when audio bytes cannot be decoded or are invalid."""
 
 
-def load_audio(file_bytes: bytes, sr: int = TARGET_SR) -> Tuple[np.ndarray, int]:
+def load_audio(file_bytes: bytes, sr: int = TARGET_SR) -> tuple[np.ndarray, int]:
     """Load audio from bytes and resample to target sample rate.
 
     Args:
@@ -53,7 +52,7 @@ def load_audio(file_bytes: bytes, sr: int = TARGET_SR) -> Tuple[np.ndarray, int]
     return waveform.astype(np.float32), sample_rate
 
 
-def segment_audio(waveform: np.ndarray, sample_rate: int) -> List[np.ndarray]:
+def segment_audio(waveform: np.ndarray, sample_rate: int) -> list[np.ndarray]:
     """Segment audio into fixed-duration chunks.
 
     Args:
@@ -80,7 +79,7 @@ def compute_snr(waveform: np.ndarray) -> float:
     return float(np.clip(snr, -20, 80))
 
 
-def waveform_metadata(waveform: np.ndarray, sample_rate: int) -> Dict[str, float]:
+def waveform_metadata(waveform: np.ndarray, sample_rate: int) -> dict[str, float]:
     """Compute basic metadata for the waveform."""
     duration = len(waveform) / sample_rate
     snr = compute_snr(waveform)

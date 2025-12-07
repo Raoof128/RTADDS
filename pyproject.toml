@@ -4,8 +4,11 @@ target-version = ["py310"]
 
 [tool.ruff]
 line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
 select = ["E", "F", "I", "B", "W", "UP", "NPY", "PYI", "PT"]
-ignore = ["E203", "W503"]
+ignore = ["E203"]
 
 [tool.pytest.ini_options]
 addopts = "-q"

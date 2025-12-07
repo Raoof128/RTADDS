@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Dict, List
 
 from fpdf import FPDF
 
@@ -25,7 +24,7 @@ class AnalysisReport(FPDF):
         self.cell(0, 10, f"Page {self.page_no()}", align="C")
 
 
-def generate_report(output_path: Path, summary: Dict[str, str], scores: Dict[str, float]) -> Path:
+def generate_report(output_path: Path, summary: dict[str, str], scores: dict[str, float]) -> Path:
     """Generate a concise PDF report summarizing scores.
 
     Args:

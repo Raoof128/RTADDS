@@ -1,8 +1,6 @@
 """Fusion engine combining multiple detection signals."""
 from __future__ import annotations
 
-from typing import Dict, Tuple
-
 import numpy as np
 
 from backend.utils.logger import get_logger
@@ -23,7 +21,7 @@ def fuse_signals(
     classifier_score: float,
     snr: float,
     energy_flatness: float,
-) -> Tuple[float, str, Dict[str, float]]:
+) -> tuple[float, str, dict[str, float]]:
     """Combine scores into a final risk assessment."""
     weights = {
         "vocoder": 0.25,

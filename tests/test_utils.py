@@ -1,9 +1,8 @@
 """Unit tests for utility helpers."""
 from __future__ import annotations
 
-import pytest
-
 import numpy as np
+import pytest
 
 from backend.utils.audio_utils import AudioProcessingError, load_audio, segment_audio
 

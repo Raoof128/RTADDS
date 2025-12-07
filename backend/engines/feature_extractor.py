@@ -1,8 +1,6 @@
 """Feature extraction engine for audio analysis."""
 from __future__ import annotations
 
-from typing import Dict, Tuple
-
 import librosa
 import numpy as np
 
@@ -17,7 +15,7 @@ class FeatureExtractor:
     def __init__(self, sample_rate: int = 16_000) -> None:
         self.sample_rate = sample_rate
 
-    def extract(self, waveform: np.ndarray) -> Tuple[np.ndarray, Dict[str, np.ndarray]]:
+    def extract(self, waveform: np.ndarray) -> tuple[np.ndarray, dict[str, np.ndarray]]:
         """Extract feature vector and auxiliary matrices.
 
         Args:

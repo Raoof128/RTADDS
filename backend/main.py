@@ -5,7 +5,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
-from backend.api import audio, stream, report
+from backend.api import audio, report, stream
 from backend.utils.logger import get_logger
 
 logger = get_logger(__name__)

@@ -1,6 +1,8 @@
 """Audio ingestion and analysis endpoints."""
 from __future__ import annotations
 
+from typing import Annotated
+
 from fastapi import APIRouter, File, HTTPException, UploadFile
 
 from backend.api.schemas import AnalysisResponse, AnalysisVisuals, Metadata
@@ -19,9 +21,10 @@ feature_extractor = FeatureExtractor()
 
 
 @router.post("", response_model=AnalysisResponse)
-async def analyze_audio(file: UploadFile = File(...)) -> AnalysisResponse:
+async def analyze_audio(file: Annotated[UploadFile, File(...)]) -> AnalysisResponse:
     """Analyze uploaded audio file."""
-    if file.content_type not in {"audio/wav", "audio/x-wav", "audio/mpeg", "application/octet-stream"}:
+    allowed_types = {"audio/wav", "audio/x-wav", "audio/mpeg", "application/octet-stream"}
+    if file.content_type not in allowed_types:
         raise HTTPException(status_code=400, detail="Unsupported file type")
 
     payload = await file.read()

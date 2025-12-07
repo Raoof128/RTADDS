@@ -1,8 +1,8 @@
-"""Lightweight deepfake classifier stub using Keras."""
+"""Lightweight classifier built for synthetic deepfake detection."""
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Any, Dict, Tuple
+from typing import Any
 
 import numpy as np
 
@@ -10,7 +10,7 @@ from backend.utils.logger import get_logger
 
 logger = get_logger(__name__)
 MODEL_PATH = Path("models/deepfake_classifier.keras")
-_MODEL_CACHE: Dict[int, Any] = {}
+_MODEL_CACHE: dict[int, Any] = {}
 
 
 def _import_tf() -> tuple[Any, Any, Any]:
@@ -86,7 +86,7 @@ def _heuristic_probability(feature_vector: np.ndarray) -> float:
     return float(np.clip(0.4 * normalized_mean + 0.6 * normalized_variance, 0, 1))
 
 
-def predict_deepfake(feature_vector: np.ndarray) -> Tuple[float, str]:
+def predict_deepfake(feature_vector: np.ndarray) -> tuple[float, str]:
     """Predict deepfake probability and label.
 
     Falls back to a deterministic heuristic if TensorFlow is missing to keep the

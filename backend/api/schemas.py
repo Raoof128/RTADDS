@@ -1,8 +1,6 @@
 """Pydantic models for API payloads and responses."""
 from __future__ import annotations
 
-from typing import Dict, List
-
 from pydantic import BaseModel, Field, field_validator
 
 
@@ -30,13 +28,13 @@ class AnalysisResponse(BaseModel):
     metadata: Metadata
     vocoder_score: float = Field(..., ge=0, le=100)
     jitter_score: float = Field(..., ge=0, le=100)
-    jitter_metrics: Dict[str, float]
+    jitter_metrics: dict[str, float]
     classifier_score: float = Field(..., ge=0, le=100)
     label: str
     final_score: float = Field(..., ge=0, le=100)
     verdict: str
     visuals: AnalysisVisuals
-    details: Dict[str, float]
+    details: dict[str, float]
 
 
 class StreamStartRequest(BaseModel):
@@ -49,11 +47,11 @@ class StreamChunkRequest(BaseModel):
     """Model for ingesting a chunk of streaming audio."""
 
     session_id: str = Field(..., min_length=1, max_length=64)
-    samples: List[float] = Field(..., min_length=1, max_length=64_000)
+    samples: list[float] = Field(..., min_length=1, max_length=64_000)
 
     @field_validator("samples")
     @classmethod
-    def validate_samples(cls, samples: List[float]) -> List[float]:
+    def validate_samples(cls, samples: list[float]) -> list[float]:
         if any(not isinstance(x, (int, float)) for x in samples):
             raise ValueError("Samples must be numeric.")
         if any(not (float("-inf") < float(x) < float("inf")) for x in samples):
@@ -70,8 +68,8 @@ class StreamStopRequest(BaseModel):
 class ReportRequest(BaseModel):
     """Model for generating a PDF report."""
 
-    summary: Dict[str, str]
-    scores: Dict[str, float]
+    summary: dict[str, str]
+    scores: dict[str, float]
 
 
 class StreamAnalysisResponse(BaseModel):
@@ -81,4 +79,4 @@ class StreamAnalysisResponse(BaseModel):
     label: str
     verdict: str
     final_score: float
-    scores: Dict[str, float]
+    scores: dict[str, float]
