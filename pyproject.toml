@@ -1,0 +1,18 @@
+[tool.black]
+line-length = 100
+target-version = ["py310"]
+
+[tool.ruff]
+line-length = 100
+select = ["E", "F", "I", "B", "W", "UP", "NPY", "PYI", "PT"]
+ignore = ["E203", "W503"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore:pkg_resources is deprecated:UserWarning",
+    "ignore:n_fft=.*:UserWarning",
+    "ignore:Trying to estimate tuning from empty frequency set.:UserWarning",
+]
+pythonpath = ["."]

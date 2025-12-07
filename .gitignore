@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+.env
+.venv/
+.pytest_cache/
+.ruff_cache/
+.coverage
+logs/**
+!logs/.gitkeep
+models/**
+!models/.gitkeep
+assets/**
+!assets/.gitkeep
+*.sqlite3
+.DS_Store
+*.png
+*.pdf

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Real-Time Audio Deepfake Detection</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Audio Deepfake Forensics Dashboard</h1>
+        <input type="file" id="audioFile" accept="audio/*">
+        <button id="analyzeBtn">Analyze</button>
+        <div id="results"></div>
+        <div class="visuals">
+            <img id="waveform" alt="Waveform" />
+            <img id="spectrogram" alt="Spectrogram" />
+            <img id="jitter" alt="Jitter" />
+            <img id="artifact" alt="Artifact Map" />
+        </div>
+    </div>
+    <script src="dashboard.js"></script>
+</body>
+</html>
