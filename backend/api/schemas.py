@@ -52,7 +52,7 @@ class StreamChunkRequest(BaseModel):
     @field_validator("samples")
     @classmethod
     def validate_samples(cls, samples: list[float]) -> list[float]:
-        if any(not isinstance(x, (int, float)) for x in samples):
+        if any(not isinstance(x, int | float) for x in samples):
             raise ValueError("Samples must be numeric.")
         if any(not (float("-inf") < float(x) < float("inf")) for x in samples):
             raise ValueError("Samples must be finite numbers.")
