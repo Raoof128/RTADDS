@@ -1,4 +1,5 @@
 """Logging utility for consistent application logging."""
+
 from __future__ import annotations
 
 import logging
@@ -23,9 +24,7 @@ def setup_logger(name: str) -> logging.Logger:
 
     logger.setLevel(logging.INFO)
 
-    formatter = logging.Formatter(
-        "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-    )
+    formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 
     console_handler = logging.StreamHandler()
     console_handler.setFormatter(formatter)
